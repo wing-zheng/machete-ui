@@ -93,4 +93,8 @@ export class ReportsComponent implements OnInit {
     dt.exportFilename = this.name + '_' + this.o.beginDate.toString() + '_to_' + this.o.endDate.toString();
     dt.exportCSV();
   }
+
+  save() {
+    console.log("Save was called.");
+  }
 }
