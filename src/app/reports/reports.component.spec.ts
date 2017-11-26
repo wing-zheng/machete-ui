@@ -67,6 +67,7 @@ describe('ReportsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-
+  it('should contain a save method', () => {
+    expect(typeof component.save).toBe("function");
+  });
 });
-
