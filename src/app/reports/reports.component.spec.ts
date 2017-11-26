@@ -19,11 +19,13 @@ class ReportsServiceSpy {
     .and.callFake(
       () => Observable.of(new Array<any>())
     );
+  saveReport = jasmine.createSpy('saveReport');
 }
 
 describe('ReportsComponent', () => {
   let component: ReportsComponent;
   let fixture: ComponentFixture<ReportsComponent>;
+  let reportsServiceSpy: ReportsServiceSpy;
 
   beforeEach(async(() => {
 
@@ -54,20 +56,30 @@ describe('ReportsComponent', () => {
       }
     })
     .compileComponents();
-
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ReportsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    reportsServiceSpy = fixture.debugElement.injector.get(ReportsService) as any;        
   });
 
   it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should contain a save method', () => {
-    expect(typeof component.save).toBe("function");
+  describe('save', () => {
+    it('should be a method', () => {
+      expect(typeof component.save).toBe("function");
+    });
+
+    it('should call the reports service save method', () => {
+      //spyOn(reportsServiceSpy, 'saveReport');
+
+      component.save();
+
+      expect(reportsServiceSpy.saveReport).toHaveBeenCalled();
+    });
   });
 });

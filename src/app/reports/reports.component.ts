@@ -95,6 +95,7 @@ export class ReportsComponent implements OnInit {
   }
 
   save() {
+    this.reportsService.saveReport();
     console.log("Save was called.");
   }
 }

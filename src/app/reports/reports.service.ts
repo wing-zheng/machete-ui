@@ -46,5 +46,7 @@ export class ReportsService {
       return [key, data[key]].map(encodeURIComponent).join('=');
     }).join('&');
   }
+
+  public saveReport(): void {}
 }
 
